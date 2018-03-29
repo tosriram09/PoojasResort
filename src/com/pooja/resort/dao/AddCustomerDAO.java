@@ -57,8 +57,8 @@ public class AddCustomerDAO {
 			pstmt1.setString(3, checkout);
 			pstmt1.setString(4, adults);
 			pstmt1.setString(5, kids);
-			pstmt1.setString(6, pets);
-			pstmt1.setString(7, smoke);
+			pstmt1.setString(6, "N");
+			pstmt1.setString(7, "N");
 			pstmt1.setString(8, roomrate);
 			pstmt1.execute();
 			

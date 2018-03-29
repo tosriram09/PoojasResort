@@ -74,8 +74,11 @@ body, h1, h2, h3, h4, h5, h6 {
 					</div>
 					<div class="panel-body">
 						<p>
-							<%=customer.getAddress()%>
+							<%=customer.getAddress1() %>
 							<br>
+							<%=customer.getAddress2() %>
+							<br>
+							<%=customer.getAddress3()%>
 						</p>
 					</div>
 				</div>

@@ -15,7 +15,7 @@ public class PrepareInvoiceDAO {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelresort", "pooja", "pooja");
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"SELECT c.name, c.address, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, s.servicedate, s.servicename, s.cost FROM CUSTOMER c, CUSTOMER_ROOM r, CUSTOMER_SERVICES s WHERE c. roomnbr = r.roomnbr AND s.roomnbr  = c.roomnbr AND s.roomnbr  = r.roomnbr and r.roomnbr = ?");
+					"SELECT c.name, c.address1, c.address2, c.address3, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, s.servicedate, s.servicename, s.cost FROM CUSTOMER c, CUSTOMER_ROOM r, CUSTOMER_SERVICES s WHERE c. roomnbr = r.roomnbr AND s.roomnbr  = c.roomnbr AND s.roomnbr  = r.roomnbr and r.roomnbr = ?");
 			pstmt.setInt(1, roomNumber);
 			ResultSet rs = pstmt.executeQuery();
 
