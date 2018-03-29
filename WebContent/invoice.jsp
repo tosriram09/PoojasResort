@@ -2,11 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.concurrent.TimeUnit"%>
 <%@page import="java.text.*"%>
+<%@page import="java.time.LocalDate" %>
+<%@page import="java.time.Period" %>
+<%@page import="java.time.format.DateTimeFormatter" %>
 <%@page import="com.pooja.resort.dao.Invoice"%>
 <%@page import="com.pooja.resort.dao.CustomerRoom"%>
 <%@page import="com.pooja.resort.dao.Customer"%>
 <%@page import="com.pooja.resort.dao.CustomerService"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,7 +35,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		double serviceTotal = 0.0;
 		double roomRentTotal = 0.0;
 		double grandTotal = 0.0;
-		double stayedDays = 0.0;
+		long stayedDays = 0;
 	%>
 	<div class="container">
 		<div class="row">
@@ -74,9 +79,9 @@ body, h1, h2, h3, h4, h5, h6 {
 					</div>
 					<div class="panel-body">
 						<p>
-							<%=customer.getAddress1() %>
+							<%=customer.getAddress1()%>
 							<br>
-							<%=customer.getAddress2() %>
+							<%=customer.getAddress2()%>
 							<br>
 							<%=customer.getAddress3()%>
 						</p>
@@ -85,7 +90,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 		</div>
 		<!-- / end client details section -->
-
+		<div class="row text-left"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Rental: </h4></div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -98,58 +103,29 @@ body, h1, h2, h3, h4, h5, h6 {
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for (CustomerService customerService : customerServices) {
-				%>
 				<tr>
 					<td><%=room.getRoomNbr()%></td>
 					<td><%=room.getCheckindate()%></td>
 					<td><%=room.getCheckoutdate()%></td>
 					<td><%=room.getRoomrate()%></td>
 					<%
-						DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-							Date checkInDate = dateFormat.parse(room.getCheckindate());
-							Date checkOutDate = dateFormat.parse(room.getCheckoutdate());
-							long diff = checkOutDate.getTime() - checkInDate.getTime();
-							stayedDays = (diff / (1000 * 60 * 60 * 24));
-							roomRentTotal = Double.parseDouble(room.getRoomrate()) * stayedDays;
+						LocalDate checkInDate = LocalDate.parse(room.getCheckindate(), DateTimeFormatter.ISO_LOCAL_DATE);
+						LocalDate checkOutDate = LocalDate.parse(room.getCheckoutdate(), DateTimeFormatter.ISO_LOCAL_DATE);
+						Period duration = Period.between(checkInDate, checkOutDate);
+						stayedDays = duration.getDays();
+						roomRentTotal = Double.parseDouble(room.getRoomrate()) * stayedDays;
 					%>
 					<td class="text-right"><%=stayedDays%></td>
 					<td class="text-right"><%=roomRentTotal%></td>
 				</tr>
-				<%
-					}
-				%>
-
-				<!--           <tr>
-            <td>Template Design</td>
-            <td><a href="#">Details of project here</a></td>
-            <td class="text-right">10</td>
-             <td class="text-right">75.00</td>
-              <td class="text-right">$750.00</td>
-          </tr>
-          <tr>
-            <td>Development</td>
-            <td><a href="#">WordPress Blogging theme</a></td>
-            <td class="text-right">5</td>
-             <td class="text-right">50.00</td>
-              <td class="text-right">$250.00</td>
-          </tr> -->
 			</tbody>
 		</table>
 
 		<div class="row text-right">
-			<div class="col-xs-2 col-xs-offset-8">
-				<p>
-					<strong> Sub Total : </strong>
-				</p>
-			</div>
-			<div class="col-xs-2">
-				<strong> <%=roomRentTotal%>
-				</strong>
-			</div>
+			<div class="col-xs-2 col-xs-offset-8"> <p> <strong> Sub Total : </strong> </p> </div>
+			<div class="col-xs-2"> <strong> <%= roomRentTotal %> </strong> </div>
 		</div>
-
+		<div class="row text-left"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Services: </h4></div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -173,22 +149,9 @@ body, h1, h2, h3, h4, h5, h6 {
 					serviceTotal = serviceTotal + Double.parseDouble(customerService.getCost());
 					}
 				%>
-				<!--           <tr>
-            <td>Template Design</td>
-            <td><a href="#">Details of project here</a></td>
-            <td class="text-right">10</td>
-             <td class="text-right">75.00</td>
-              <td class="text-right">$750.00</td>
-          </tr>
-          <tr>
-            <td>Development</td>
-            <td><a href="#">WordPress Blogging theme</a></td>
-            <td class="text-right">5</td>
-             <td class="text-right">50.00</td>
-              <td class="text-right">$250.00</td>
-          </tr> -->
 			</tbody>
 		</table>
+
 
 		<div class="row text-right">
 			<div class="col-xs-2 col-xs-offset-8">

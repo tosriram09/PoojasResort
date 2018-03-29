@@ -7,21 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pooja.resort.dao.CheckoutDAO;
-import com.pooja.resort.dao.Invoice;
-import com.pooja.resort.dao.PrepareInvoiceDAO;
+import com.pooja.resort.dao.CheckInCustomerDAO;
 
 /**
- * Servlet implementation class CheckOut
+ * Servlet implementation class AddCustomer
  */
-@WebServlet("/CheckOut")
-public class CheckOut extends HttpServlet {
+@WebServlet("/AddCustomer")
+public class CheckInCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CheckOut() {
+	public CheckInCustomer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -42,15 +40,12 @@ public class CheckOut extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int roomNumber = Integer.parseInt(request.getParameter("roomnumber"));
+		String queryString = request.getParameter("queryString");
+		CheckInCustomerDAO customerDAO = new CheckInCustomerDAO();
+		int roomNumber = customerDAO.addCustomer(queryString);
 
-		CheckoutDAO checkoutDAO = new CheckoutDAO();
-		checkoutDAO.checkOutGuest(roomNumber);
-
-		PrepareInvoiceDAO prepareInvoiceDAO = new PrepareInvoiceDAO();
-		Invoice invoice = prepareInvoiceDAO.prepareInvoice(roomNumber);
-
-		request.setAttribute("invoice", invoice);
-		request.getRequestDispatcher("invoice.jsp").forward(request, response);
+		String message = "Customer Alloted Room: " + roomNumber;
+		request.setAttribute("message", message);
+		request.getRequestDispatcher("/checkincustomer.jsp").forward(request, response);
 	}
 }

@@ -15,7 +15,8 @@ public class PrepareInvoiceDAO {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelresort", "pooja", "pooja");
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"SELECT c.name, c.address1, c.address2, c.address3, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, s.servicedate, s.servicename, s.cost FROM CUSTOMER c, CUSTOMER_ROOM r, CUSTOMER_SERVICES s WHERE c. roomnbr = r.roomnbr AND s.roomnbr  = c.roomnbr AND s.roomnbr  = r.roomnbr and r.roomnbr = ?");
+					"SELECT c.name, c.address1, c.address2, c.address3, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, "
+							+ "	s.servicedate, s.servicename, s.cost FROM CUSTOMER c JOIN CUSTOMER_ROOM r ON (r.roomnbr = c.roomnbr) LEFT JOIN CUSTOMER_SERVICES s ON (s.roomnbr = r.roomnbr) WHERE r.roomnbr = ?");
 			pstmt.setInt(1, roomNumber);
 			ResultSet rs = pstmt.executeQuery();
 
@@ -38,12 +39,16 @@ public class PrepareInvoiceDAO {
 					room.setCheckoutdate(rs.getString("checkoutdate"));
 					invoice.setCustomerRoom(room);
 				}
-				CustomerService service = new CustomerService();
-				service.setServicedate(rs.getString("servicedate"));
-				service.setServicename(rs.getString("servicename"));
-				service.setCost(rs.getString("cost"));
 
-				customerService.add(service);
+				if (null != rs.getString("servicedate")) {
+					CustomerService service = new CustomerService();
+					service.setServicedate(rs.getString("servicedate"));
+					service.setServicename(rs.getString("servicename"));
+					service.setCost(rs.getString("cost"));
+
+					customerService.add(service);
+				}
+
 				i++;
 			}
 			invoice.setCustomerService(customerService);

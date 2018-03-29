@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-public class AddCustomerDAO {
+public class CheckInCustomerDAO {
 	public int addCustomer(String queryString) {
 		StringTokenizer tokenizer = new StringTokenizer(queryString, "&");
 
@@ -33,7 +33,9 @@ public class AddCustomerDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelresort", "pooja", "pooja");
-			roomNumber = (int) (Math.random()*100);
+			
+			 Random randomObj = new Random();
+			 roomNumber = randomObj.ints(10, 50).findFirst().getAsInt();
 
 			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, name);
@@ -43,7 +45,6 @@ public class AddCustomerDAO {
 			StringTokenizer addressTokenizer = new StringTokenizer(address, ",");
 			while (addressTokenizer.hasMoreTokens()) {
 				String address1 = addressTokenizer.nextToken();
-				System.out.println("Address -> " + address1);
 				pstmt.setString(count++, address1);
 			}
 			pstmt.setString(6, phone);
@@ -62,8 +63,17 @@ public class AddCustomerDAO {
 			pstmt1.setString(8, roomrate);
 			pstmt1.execute();
 			
+			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE available_rooms SET checkindate = ?, checkoutdate = ?, occupancy = ? WHERE roomnbr = ? AND roomtype = ?");
+			pstmt2.setString(1, checkin);
+			pstmt2.setString(2, checkout);
+			pstmt2.setString(3, "Y");
+			pstmt2.setString(4, Integer.toString(roomNumber));
+			pstmt2.setString(5,  roomname);
+			
 			pstmt.close();
 			pstmt1.close();
+			pstmt2.close();
+			
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
