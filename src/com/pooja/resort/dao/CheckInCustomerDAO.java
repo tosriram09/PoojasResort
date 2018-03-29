@@ -3,6 +3,7 @@ package com.pooja.resort.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Random;
 import java.util.StringTokenizer;
 
@@ -28,19 +29,40 @@ public class CheckInCustomerDAO {
 		String pets = tokens[9];
 		String smoke = tokens[10];
 		String roomrate = tokens[11];
-		
+
 		int roomNumber = 0;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelresort", "pooja", "pooja");
-			
-			 Random randomObj = new Random();
-			 roomNumber = randomObj.ints(10, 50).findFirst().getAsInt();
+
+			boolean roomAllocated = false;
+
+			while (!roomAllocated) {
+				Random randomObj = new Random();
+				roomNumber = randomObj.ints(1, 50).findFirst().getAsInt();
+
+				PreparedStatement pstmt3 = conn
+						.prepareStatement("SELECT occupancy FROM available_rooms WHERE roomnbr = ? AND roomtype = ?");
+				pstmt3.setInt(1, roomNumber);
+				pstmt3.setString(2, roomname);
+
+				ResultSet rs = pstmt3.executeQuery();
+
+				while (rs.next()) {
+					String occupancy = rs.getString(1);
+
+					if (occupancy.equals("N"))
+						roomAllocated = true;
+					else
+						System.out.println("Room Occupied");
+				}
+				pstmt3.close();
+			}
 
 			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
-			
+
 			int count = 3;
 			StringTokenizer addressTokenizer = new StringTokenizer(address, ",");
 			while (addressTokenizer.hasMoreTokens()) {
@@ -51,8 +73,9 @@ public class CheckInCustomerDAO {
 			pstmt.setString(7, "F");
 			pstmt.setInt(8, roomNumber);
 			pstmt.execute();
-			
-			PreparedStatement pstmt1 = conn.prepareStatement("INSERT INTO CUSTOMER_ROOM VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+
+			PreparedStatement pstmt1 = conn
+					.prepareStatement("INSERT INTO CUSTOMER_ROOM VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt1.setInt(1, roomNumber);
 			pstmt1.setString(2, checkin);
 			pstmt1.setString(3, checkout);
@@ -62,18 +85,20 @@ public class CheckInCustomerDAO {
 			pstmt1.setString(7, "N");
 			pstmt1.setString(8, roomrate);
 			pstmt1.execute();
-			
-			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE available_rooms SET checkindate = ?, checkoutdate = ?, occupancy = ? WHERE roomnbr = ? AND roomtype = ?");
+
+			PreparedStatement pstmt2 = conn.prepareStatement(
+					"UPDATE available_rooms SET checkindate = ?, checkoutdate = ?, occupancy = ? WHERE roomnbr = ? AND roomtype = ?");
 			pstmt2.setString(1, checkin);
 			pstmt2.setString(2, checkout);
 			pstmt2.setString(3, "Y");
 			pstmt2.setString(4, Integer.toString(roomNumber));
-			pstmt2.setString(5,  roomname);
-			
+			pstmt2.setString(5, roomname);
+			pstmt2.execute();
+
 			pstmt.close();
 			pstmt1.close();
 			pstmt2.close();
-			
+
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
