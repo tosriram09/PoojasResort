@@ -42,8 +42,10 @@ public class CheckAvailability extends HttpServlet {
 			throws ServletException, IOException {
 		String checkInDate 	= request.getParameter("checkInDate");
 		String checkOutDate = request.getParameter("checkOutDate");
-		CheckAvailabilityDAO checkavailabity = new CheckAvailabilityDAO();
-		checkavailabity.
+		CheckAvailabilityDAO checkavailabityDAO = new CheckAvailabilityDAO();
+		boolean isAvailabe = checkavailabityDAO.checkAvailability(checkInDate, checkOutDate);
+		
+		request.setAttribute("roomAvailable", isAvailabe);
 		
 		
 	}
