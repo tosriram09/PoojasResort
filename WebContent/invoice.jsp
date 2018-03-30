@@ -4,9 +4,9 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.util.concurrent.TimeUnit"%>
 <%@page import="java.text.*"%>
-<%@page import="java.time.LocalDate" %>
-<%@page import="java.time.Period" %>
-<%@page import="java.time.format.DateTimeFormatter" %>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.Period"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="com.pooja.resort.dao.Invoice"%>
 <%@page import="com.pooja.resort.dao.CustomerRoom"%>
 <%@page import="com.pooja.resort.dao.Customer"%>
@@ -90,7 +90,9 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 		</div>
 		<!-- / end client details section -->
-		<div class="row text-left"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Rental: </h4></div>
+		<div class="row text-left">
+			<h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Rental:</h4>
+		</div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -122,10 +124,19 @@ body, h1, h2, h3, h4, h5, h6 {
 		</table>
 
 		<div class="row text-right">
-			<div class="col-xs-2 col-xs-offset-8"> <p> <strong> Sub Total : </strong> </p> </div>
-			<div class="col-xs-2"> <strong> <%= roomRentTotal %> </strong> </div>
+			<div class="col-xs-2 col-xs-offset-8">
+				<p>
+					<strong> Sub Total : </strong>
+				</p>
+			</div>
+			<div class="col-xs-2">
+				<strong> <%=roomRentTotal%>
+				</strong>
+			</div>
 		</div>
-		<div class="row text-left"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Services: </h4></div>
+		<div class="row text-left">
+			<h4>&nbsp;&nbsp;&nbsp;&nbsp;Room Services:</h4>
+		</div>
 		<table class="table table-bordered">
 			<thead>
 				<tr>

@@ -37,7 +37,9 @@ public class CheckInCustomerDAO {
 
 			boolean roomAllocated = false;
 
-			while (!roomAllocated) {
+			int retryCount = 10;
+			while (!roomAllocated && retryCount > 0) {
+				retryCount--;
 				Random randomObj = new Random();
 				roomNumber = randomObj.ints(1, 50).findFirst().getAsInt();
 

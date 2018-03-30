@@ -126,12 +126,12 @@
 												</div>
 												<div class="form-group">
 													<input type="text" class="form-control" id="checkin"
-														name="checkin" placeholder="Check In Date in DD/MM/YY"
+														name="checkin" placeholder="Check In Date as YYYY-MM-DD"
 														required="">
 												</div>
 												<div class="form-group">
 													<input type="text" class="form-control" id="checkout"
-														name="checkout" placeholder="Check Out Date in DD/MM/YY"
+														name="checkout" placeholder="Check Out Date as YYYY-MM-DD"
 														required="">
 												</div>
 												<div class="form-group">
@@ -157,7 +157,7 @@
 													</div>
 												</div>
 												<div class="bottom">
-													<div class="clearfix">&nbsp; &nbsp;</div>
+													<div class="clearfix"></div>
 												</div>
 											</form>
 										</div>

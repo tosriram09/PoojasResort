@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pooja.resort.dao.CheckAvailabilityDAO;
+import com.pooja.resort.dao.AddRoomServiceDAO;
 
 /**
- * Servlet implementation class CheckAvailability
+ * Servlet implementation class AddRoomService
  */
-@WebServlet("/CheckAvailability")
-public class CheckAvailability extends HttpServlet {
+@WebServlet("/AddRoomService")
+public class AddRoomService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CheckAvailability() {
+	public AddRoomService() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,13 +40,16 @@ public class CheckAvailability extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String checkInDate 	= request.getParameter("datepicker1");
-		String checkOutDate = request.getParameter("datepicker2");
-		System.out.println(checkInDate + "-" + checkOutDate);
-		CheckAvailabilityDAO checkavailabityDAO = new CheckAvailabilityDAO();
-		boolean isAvailabe = checkavailabityDAO.checkAvailability(checkInDate, checkOutDate);
+		int roomNumber = Integer.parseInt(request.getParameter("roomnumber"));
+		String serviceName = request.getParameter("servicename");
+		int cost = Integer.parseInt(request.getParameter("cost"));
+
+		AddRoomServiceDAO roomServiceDAO = new AddRoomServiceDAO();
+		roomServiceDAO.addRoomService(roomNumber, serviceName, cost);
 		
-		request.setAttribute("roomAvailable", isAvailabe);
+		String message = "Room Service Added for Room: " + roomNumber;
+		request.setAttribute("message", message);
+		request.getRequestDispatcher("/roomservice.jsp").forward(request, response);
 	}
 
 }
