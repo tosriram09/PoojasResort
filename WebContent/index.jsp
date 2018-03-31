@@ -8,8 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <!-- //for-mobile-apps -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
@@ -22,7 +24,7 @@
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
 <link rel="stylesheet" href="css/jquery-ui.css" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/portal.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
 <!--fonts-->
 <link href="//fonts.googleapis.com/css?family=Oswald:300,400,700"
@@ -57,7 +59,7 @@
 					</button>
 					<h1>
 						<a class="navbar-brand" href="index.html">Poojas <span>Resort</span>
-						<p class="logo_w3l_agile_caption">Your Dreamy Resort</p></a>
+							<p class="logo_w3l_agile_caption">Your Dreamy Resort</p></a>
 					</h1>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -131,7 +133,6 @@
 					</li>
 				</ul>
 			</div>
-			<div class="clearfix"></div>
 			<!--banner Slider starts Here-->
 		</div>
 		<div class="thim-click-to-bottom">
@@ -163,16 +164,23 @@
 			</div>
 		</div>
 	</div>
+	<div class="footer-w3 ">
+					<%
+						String message = (String)request.getAttribute("message");
+					%>
+					<%if(message!=null){%> 
+					<p> <%=message%> </p>  
+					<% } %>
 	<!-- //Modal1 -->
 	<div id="availability-agileits">
 		<div class="col-md-3 book-form-left-w3layouts">
 			<h2>CHECK AVAILABILITY</h2>
 		</div>
 		<div class="col-md-9 book-form">
-			<form action="../CheckAvailability" method="post">
+			<form action="CheckAvailability" method="post">
 				<div class="fields-w3ls form-left-agileits-w3layouts ">
 					<p>Room Type</p>
-					<select class="form-control">
+					<select class="form-control" name="roomtype">
 						<option>Select a Room</option>
 						<option>Deluxe Room</option>
 						<option>Maharaja Room</option>
@@ -182,15 +190,15 @@
 				</div>
 				<div class="fields-w3ls form-date-w3-agileits">
 					<p>CheckIn Date</p>
-					<input id="datepicker1" name="datepicker1" type="text" value="Select Date"
-						onfocus="this.value = '';"
+					<input id="datepicker1" name="datepicker1" type="text"
+						value="Select Date" onfocus="this.value = '';"
 						onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
 						required="">
 				</div>
 				<div class="fields-w3ls form-date-w3-agileits">
 					<p>CheckOut Date</p>
-					<input id="datepicker2" name="datepicker2" type="text" value="Select Date"
-						onfocus="this.value = '';"
+					<input id="datepicker2" name="datepicker2" type="text"
+						value="Select Date" onfocus="this.value = '';"
 						onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
 						required="">
 				</div>
@@ -200,7 +208,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="clearfix"></div>
+		<div class="clearfix"><</div>
 	</div>
 	<!-- banner-bottom -->
 	<div class="banner-bottom">
@@ -571,7 +579,7 @@
 				data-aos="flip-left">
 				<div class="contact-agileits">
 					<h4>Contact Us</h4>
-					<form action="#" method="post" name="sentMessage" id="contactForm"
+					<form action="#" method="post" name="sent}" id="contactForm"
 						novalidate>
 						<div class="control-group form-group">
 							<div class="controls">

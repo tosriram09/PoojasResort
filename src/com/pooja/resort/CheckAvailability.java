@@ -42,11 +42,15 @@ public class CheckAvailability extends HttpServlet {
 			throws ServletException, IOException {
 		String checkInDate 	= request.getParameter("datepicker1");
 		String checkOutDate = request.getParameter("datepicker2");
-		System.out.println(checkInDate + "-" + checkOutDate);
+		String roomType = request.getParameter("roomtype");
+		System.out.println(checkInDate + "-" + checkOutDate + "-" + roomType);
 		CheckAvailabilityDAO checkavailabityDAO = new CheckAvailabilityDAO();
-		boolean isAvailabe = checkavailabityDAO.checkAvailability(checkInDate, checkOutDate);
-		
-		request.setAttribute("roomAvailable", isAvailabe);
-	}
+		boolean isAvailabe = checkavailabityDAO.checkAvailability(roomType,checkInDate, checkOutDate);
+		System.out.println("Is Available -> " + isAvailabe);
+		String message = "Room not available for the requested date";
+		if (isAvailabe == true) message = "Room available for the requested date";
+		request.setAttribute("message", message);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 
+	}
 }
