@@ -171,6 +171,7 @@
 					<%if(message!=null){%> 
 					<p> <%=message%> </p>  
 					<% } %>
+					</div>
 	<!-- //Modal1 -->
 	<div id="availability-agileits">
 		<div class="col-md-3 book-form-left-w3layouts">
