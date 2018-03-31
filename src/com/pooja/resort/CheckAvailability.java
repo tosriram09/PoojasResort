@@ -50,7 +50,7 @@ public class CheckAvailability extends HttpServlet {
 		String message = "Room not available for the requested date";
 		if (isAvailabe == true) message = "Room available for the requested date";
 		request.setAttribute("message", message);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 	}
 }

@@ -106,12 +106,6 @@
 							<div class="container">
 								<div class="agileits-banner-info">
 									<h4>Star Resort</h4>
-									<h3>Stay with friends & families</h3>
-									<p>Come & enjoy precious moment with us</p>
-									<div class="agileits_w3layouts_more menu__item">
-										<a href="#" class="menu__link" data-toggle="modal"
-											data-target="#myModal">Learn More</a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -164,14 +158,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer-w3 ">
-					<%
-						String message = (String)request.getAttribute("message");
-					%>
-					<%if(message!=null){%> 
-					<p> <%=message%> </p>  
-					<% } %>
-					</div>
+	<section id="message1">
+		<div class="footer-w3" id="message1">
+			<%
+				String message = (String)request.getAttribute("message");
+			%>
+			<%if(message!=null){%>
+			<p>
+				<%=message%>
+			</p>
+			<% } %>
+		</div>
+	</section>
 	<!-- //Modal1 -->
 	<div id="availability-agileits">
 		<div class="col-md-3 book-form-left-w3layouts">
