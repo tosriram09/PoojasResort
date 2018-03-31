@@ -306,7 +306,7 @@
 						data-wow-delay="0.3s">
 						<div class="advantage-block">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<h4>Cafe 24 Multi Cusine Restraunt</h4>
+							<h4>Cafe 24 Multi Cusine Resort</h4>
 							<p>The 24 hour coffee shop and bar features Indian, Oriental
 								and Continental cuisines, alongside elaborate breakfast,
 								fast-food, dessert and beverage selections.</p>
