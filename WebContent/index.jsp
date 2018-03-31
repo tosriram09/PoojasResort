@@ -9,8 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 </script>
 <!-- //for-mobile-apps -->
@@ -105,7 +107,7 @@
 						<div class="w3layouts-banner-top w3layouts-banner-top1">
 							<div class="container">
 								<div class="agileits-banner-info">
-									<h4>Star Resort</h4>
+									<h4>Star Class Resort</h4>
 								</div>
 							</div>
 						</div>
@@ -114,7 +116,7 @@
 						<div class="w3layouts-banner-top w3layouts-banner-top2">
 							<div class="container">
 								<div class="agileits-banner-info">
-									<h4>Star Hotel</h4>
+									<h4>Star Resort</h4>
 									<h3>want luxurious vacation?</h3>
 									<p>Get accommodation today</p>
 									<div class="agileits_w3layouts_more menu__item">
@@ -161,13 +163,17 @@
 	<section id="message1">
 		<div class="footer-w3" id="message1">
 			<%
-				String message = (String)request.getAttribute("message");
+				String message = (String) request.getAttribute("message");
 			%>
-			<%if(message!=null){%>
+			<%
+				if (message != null) {
+			%>
 			<p>
 				<%=message%>
 			</p>
-			<% } %>
+			<%
+				}
+			%>
 		</div>
 	</section>
 	<!-- //Modal1 -->
@@ -230,7 +236,7 @@
 					<li>
 						<div class="w3_grid_effect">
 							<span class="cbp-ig-icon w3_cube"></span>
-							<h4 class="cbp-ig-title">TEA PLANTATION VIEW BALCONY</h4>
+							<h4 class="cbp-ig-title">BALCONY VIEW</h4>
 							<span class="cbp-ig-category">Resort Inn</span>
 						</div>
 					</li>
@@ -259,21 +265,7 @@
 			<div class="ab-w3l-spa">
 				<h3 class="title-w3-agileits title-black-wthree">About Our
 					Resort Inn</h3>
-				<p class="about-para-w3ls">Pitched amidst the charms of the
-					green tea-estates in Munnar, Tea Valley Resort hotel has the ideal
-					ambience that would assure one that perfect tranquil break.
-					Elegantly designed to give one the most comfortable stay, the 29
-					semi-detached cottages at Tea Valley Resort hotel each has a
-					private deck that promises one the sights of the lush greenery that
-					surrounds this hill top resort. Together with the alluring climate
-					at Munnar â the mist drenched skies and hills, the green
-					tea-estates and the cool temperatures, the moments one spent at Tea
-					Valley Resort hotel would be unforgettable. Positioned neatly
-					amidst the thriving greenery of the tea estates, Tea Valley Resort
-					hotel, one of the best resorts/hotels in Munnar has partially
-					colonial styled building structure and interiors that elevate an
-					ethnic feel and invites one to experience the âgreat green
-					lifeâ!</p>
+				<p class="about-para-w3ls">This resort is a perfect gateway for nature lovers. The breath taking locale with tranquil backwaters of river presents an ideal setting for a long awaited vacation. It has a colonial style architecture equipped to accomodate so many persons at a time. Spacious, calonial style double rooms with modern amenities twin bedded cottages will all comforts. The forest near the resort is a home of heard of elephants, sambar and barking deer, crocodiles, tigers and varieties of birds. No where else we can see such a sight seeing of wild life.<br>Resort has large charming room for seminars, meetings with multi media projector and other conference facilities with large play area for kids and mediation hall. </p>
 				<img src="images/about.jpg" class="img-responsive" alt="Hair Salon">
 				<div class="w3l-slider-img">
 					<img src="images/a1.jpg" class="img-responsive" alt="Hair Salon">
@@ -368,16 +360,6 @@
 				</div> </a>
 		</div>
 		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg"
-				class="img-responsive" alt="/">
-				<div class="textbox">
-					<h4>Poojas Resort</h4>
-					<p>
-						<i class="fa fa-picture-o" aria-hidden="true"></i>
-					</p>
-				</div> </a>
-		</div>
-		<div class="col-md-3 gallery-grid gallery1">
 			<a href="images/g5.jpg" class="swipebox"><img src="images/g5.jpg"
 				class="img-responsive" alt="/">
 				<div class="textbox">
@@ -398,17 +380,7 @@
 				</div> </a>
 		</div>
 		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g6.jpg" class="swipebox"><img src="images/g7.jpg"
-				class="img-responsive" alt="/">
-				<div class="textbox">
-					<h4>Poojas Resort</h4>
-					<p>
-						<i class="fa fa-picture-o" aria-hidden="true"></i>
-					</p>
-				</div> </a>
-		</div>
-		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g6.jpg" class="swipebox"><img src="images/g8.jpg"
+			<a href="images/g7.jpg" class="swipebox"><img src="images/g7.jpg"
 				class="img-responsive" alt="/">
 				<div class="textbox">
 					<h4>Poojas Resort</h4>
@@ -428,27 +400,7 @@
 				</div> </a>
 		</div>
 		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g10.jpg" class="swipebox"><img
-				src="images/g10.jpg" class="img-responsive" alt="/">
-				<div class="textbox">
-					<h4>Poojas Resort</h4>
-					<p>
-						<i class="fa fa-picture-o" aria-hidden="true"></i>
-					</p>
-				</div> </a>
-		</div>
-		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg"
-				class="img-responsive" alt="/">
-				<div class="textbox">
-					<h4>Poojas Resort</h4>
-					<p>
-						<i class="fa fa-picture-o" aria-hidden="true"></i>
-					</p>
-				</div> </a>
-		</div>
-		<div class="col-md-3 gallery-grid gallery1">
-			<a href="images/g2.jpg" class="swipebox"><img src="images/g2.jpg"
+			<a href="images/g8.jpg" class="swipebox"><img src="images/g8.jpg"
 				class="img-responsive" alt="/">
 				<div class="textbox">
 					<h4>Poojas Resort</h4>
@@ -577,7 +529,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 contact-w3-agile2"
 				data-aos="flip-left">
 				<div class="contact-agileits">
-					<h4>Contact Us</h4>
+					<h4>Subscribe to our newsletter</h4>
 					<form action="#" method="post" name="sent}" id="contactForm"
 						novalidate>
 						<div class="control-group form-group">
@@ -623,7 +575,7 @@
 						href="mailto:contactus@poojasresort.co.in">contactus@poojasresort.co.in</a>
 				</p>
 				<p class="contact-agile1">
-					<strong>Address :</strong> 25 Munnar Highway, Kerala, India
+					<strong>Address :</strong>H D Kote Taluk, Mysuru , Karnataka - 571114, India
 				</p>
 			</div>
 			<div class="clearfix"></div>
