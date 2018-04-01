@@ -105,14 +105,7 @@
 													</label>
 												</div>
 											</div>
-											<div class="form-group">
-												<div class="checkbox">
-													<label> <input type="checkbox" id="terms"
-														data-error="Kindly accept the terms of use" required="">
-														I have read and accept terms of use.
-													</label>
-													<div class="help-block with-errors"></div>
-												</div>
+											<div class="form-group"> &nbsp;							
 											</div>
 											<div class="form-group">
 												<button type="button" class="btn btn-primary"
@@ -174,9 +167,11 @@
 														</label>
 													</div>
 												</div>
+												<!-- 
 												<div class="form-group">
 													<br />&nbsp;
 												</div>
+												 -->
 												<div class="bottom">
 													<div class="clearfix"></div>
 												</div>
