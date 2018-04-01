@@ -97,6 +97,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<thead>
 				<tr>
 					<th><h4>Room Nbr</h4></th>
+					<th><h4>Room Type</h4></th>
 					<th><h4>Check In Date</h4></th>
 					<th><h4>Check Out Date</h4></th>
 					<th><h4>Cost/Day</h4></th>
@@ -107,6 +108,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<tbody>
 				<tr>
 					<td><%=room.getRoomNbr()%></td>
+					<td><%=room.getRoomType()%></td>
 					<td><%=room.getCheckindate()%></td>
 					<td><%=room.getCheckoutdate()%></td>
 					<td><%=room.getRoomrate()%></td>
@@ -141,6 +143,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<thead>
 				<tr>
 					<th><h4>Room Nbr</h4></th>
+					<th><h4>Room Type</h4></th>
 					<th><h4>Service Date</h4></th>
 					<th><h4>Service Name</h4></th>
 					<th><h4>Cost</h4></th>
@@ -152,6 +155,7 @@ body, h1, h2, h3, h4, h5, h6 {
 				%>
 				<tr>
 					<td><%=room.getRoomNbr()%></td>
+					<td><%=room.getRoomType()%>
 					<td><%=customerService.getServicedate()%></td>
 					<td class="text-left"><%=customerService.getServicename()%></td>
 					<td class="text-right"><%=customerService.getCost()%></td>

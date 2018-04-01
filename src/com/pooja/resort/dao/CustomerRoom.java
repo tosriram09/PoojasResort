@@ -6,6 +6,9 @@ public class CustomerRoom {
 	String checkindate;
 	String roomrate;
 	String checkoutdate;
+	private String roomType;
+	
+	
 	public String getRoomNbr() {
 		return roomNbr;
 	}
@@ -29,5 +32,11 @@ public class CustomerRoom {
 	}
 	public void setCheckoutdate(String checkoutdate) {
 		this.checkoutdate = checkoutdate;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
 	}
 }

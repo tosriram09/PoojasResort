@@ -22,14 +22,15 @@ public class CheckInCustomerDAO {
 		String address = tokens[2];
 		String phone = tokens[3];
 		String roomname = tokens[4];
-		String checkin = tokens[5];
-		String checkout = tokens[6];
-		String adults = tokens[7];
-		String kids = tokens[8];
-		String pets = tokens[9];
-		String smoke = tokens[10];
-		String roomrate = tokens[11];
+		String roomrate = tokens[5];
+		String checkin = tokens[6];
+		String checkout = tokens[7];
+		String adults = tokens[8];
+		String kids = tokens[9];
+		String pets = tokens[10];
+		String smoke = tokens[11];
 
+		System.out.println("Room Type -> " + roomname + "=" + roomrate);
 		int roomNumber = 0;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,7 +78,7 @@ public class CheckInCustomerDAO {
 			pstmt.execute();
 
 			PreparedStatement pstmt1 = conn
-					.prepareStatement("INSERT INTO CUSTOMER_ROOM VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO CUSTOMER_ROOM VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt1.setInt(1, roomNumber);
 			pstmt1.setString(2, checkin);
 			pstmt1.setString(3, checkout);
@@ -86,6 +87,7 @@ public class CheckInCustomerDAO {
 			pstmt1.setString(6, "N");
 			pstmt1.setString(7, "N");
 			pstmt1.setString(8, roomrate);
+			pstmt1.setString(9, roomname);
 			pstmt1.execute();
 
 			PreparedStatement pstmt2 = conn.prepareStatement(

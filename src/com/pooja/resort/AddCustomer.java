@@ -13,13 +13,13 @@ import com.pooja.resort.dao.CheckInCustomerDAO;
  * Servlet implementation class AddCustomer
  */
 @WebServlet("/AddCustomer")
-public class CheckInCustomer extends HttpServlet {
+public class AddCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CheckInCustomer() {
+	public AddCustomer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -8,31 +8,42 @@
 <meta name="keywords"
 	content="Registration / Login form Responsive Widget, Login forms,Flat Pricing tables,Flat Drop downs  Sign up Web forms, Login sign up Responsive web Forms," />
 <script type="application/x-javascript">
+	
+	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
+
 </script>
 <!-- Custom CSS -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap-datepicker.css" rel='stylesheet'
 	type='text/css' />
+
 <!--font CSS-->
 <script src="js/jquery2.0.3.min.js"></script>
 <script type="text/javascript">
 	function formSubmit() {
 		var gender = document.getElementById("customer").elements["gender"].value
+		var roomType = document.getElementById("roomtype");
 
 		var userInput = document.getElementById("name").value + '&'
 				+ document.getElementById("email").value + '&'
 				+ document.getElementById("address").value + '&'
 				+ document.getElementById("phone").value + '&'
-				+ document.getElementById("roomname").value + '&'
+				+ roomtype.options[roomtype.selectedIndex].text + '&'
+				+ roomtype.options[roomtype.selectedIndex].value + '&'
 				+ document.getElementById("checkin").value + '&'
 				+ document.getElementById("checkout").value + '&'
 				+ document.getElementById("adults").value + '&'
 				+ document.getElementById("kids").value + '&'
 				+ document.getElementById("pets").value + '&'
-				+ document.getElementById("smoke").value + '&'
-				+ document.getElementById("roomrate").value;
-
+				+ document.getElementById("smoke").value + '&';
 		document.getElementById("queryString").value = userInput
 		document.getElementById("customer").submit();
 	}
@@ -121,8 +132,17 @@
 										<div class="form-body form-body-info">
 											<form data-toggle="validator" action="#" method="post">
 												<div class="form-group">
-													<input type="text" class="form-control" id="roomname"
-														name="roomname" placeholder="Room Type" required="">
+													<select class="form-control" style="width: 100%;"
+														id="roomtype" name = "roomtype">
+														<option
+															style="background : rgb(37, 40, 42)" value = "2500">Deluxe Room</option>
+														<option
+															style="background : rgb(37, 40, 42)" value="3500">Maharaja Room</option>
+														<option
+															style="background : rgb(37, 40, 42)" value="1500">Twin Room</option>
+														<option
+															style="background: rgb(37, 40, 42)" value="4550">Maharaja Tent</option>
+													</select>
 												</div>
 												<div class="form-group">
 													<input type="text" class="form-control" id="checkin"
@@ -143,18 +163,19 @@
 														name="kids" placeholder="No. of Kids" required="">
 												</div>
 												<div class="form-group">
-													<input type="text" class="form-control" id="roomrate"
-														name="roomrate" placeholder="Room Rate" required="">
+													<br />
 												</div>
-
 												<div class="form-group">
 													<div class="checkbox">
 														<label> <input type="checkbox" class="pets"
-															id="pets" required=""> Pets?
-														</label> &nsbp <label> <input type="checkbox" id="smoke"
+															id="pets" required=""> Pets? &nbsp; &nbsp; &nbsp;
+														</label>  <label> <input type="checkbox" id="smoke"
 															required=""> Smoke?
 														</label>
 													</div>
+												</div>
+												<div class="form-group">
+													<br />&nbsp;
 												</div>
 												<div class="bottom">
 													<div class="clearfix"></div>

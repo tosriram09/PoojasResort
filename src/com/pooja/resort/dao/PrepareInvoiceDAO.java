@@ -15,7 +15,7 @@ public class PrepareInvoiceDAO {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelresort", "pooja", "pooja");
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"SELECT c.name, c.address1, c.address2, c.address3, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, "
+					"SELECT c.name, c.address1, c.address2, c.address3, c.email, r.roomnbr, r.checkindate, r.checkoutdate, r.roomrate, r.roomtype, "
 							+ "	s.servicedate, s.servicename, s.cost FROM CUSTOMER c JOIN CUSTOMER_ROOM r ON (r.roomnbr = c.roomnbr) LEFT JOIN CUSTOMER_SERVICES s ON (s.roomnbr = r.roomnbr) WHERE r.roomnbr = ?");
 			pstmt.setInt(1, roomNumber);
 			ResultSet rs = pstmt.executeQuery();
@@ -37,6 +37,8 @@ public class PrepareInvoiceDAO {
 					room.setCheckindate(rs.getString("checkindate"));
 					room.setRoomrate(rs.getString("roomrate"));
 					room.setCheckoutdate(rs.getString("checkoutdate"));
+					room.setRoomType(rs.getString("roomtype"));
+					System.out.println(room.getRoomType());
 					invoice.setCustomerRoom(room);
 				}
 

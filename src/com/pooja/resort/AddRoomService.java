@@ -42,10 +42,9 @@ public class AddRoomService extends HttpServlet {
 			throws ServletException, IOException {
 		int roomNumber = Integer.parseInt(request.getParameter("roomnumber"));
 		String serviceName = request.getParameter("servicename");
-		int cost = Integer.parseInt(request.getParameter("cost"));
 
 		AddRoomServiceDAO roomServiceDAO = new AddRoomServiceDAO();
-		roomServiceDAO.addRoomService(roomNumber, serviceName, cost);
+		roomServiceDAO.addRoomService(roomNumber, serviceName);
 		
 		String message = "Room Service Added for Room: " + roomNumber;
 		request.setAttribute("message", message);
