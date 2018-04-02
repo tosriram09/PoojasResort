@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%><!DOCTYPE html>
 <html>
 <head>
-<title>Flat Sign Up Form Responsive Widget Template| Home ::
-	W3layouts</title>
+<title>Checkout Guest</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
